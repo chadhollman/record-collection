@@ -8,4 +8,4 @@ and also included a static pie chart at the bottom of the page that shows the to
 ### JavaScript Code: [view here](records.js)
 ![Dashboard](dashboard_screenshot.png)
 
-### Data provided by Discogs
+Data provided by Discogs
