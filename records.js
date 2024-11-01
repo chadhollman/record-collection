@@ -44,7 +44,12 @@ function updateCharts(artist, data) {
     }];
     const scatterLayout = {
         
-        
+        margin: {
+            b: 150,
+            t: 50,
+            l: 50,
+            r: 50 
+          },
         yaxis: { 
             title: "Release Year",
             tickformat: 'd'  // Display y-axis values as integers
