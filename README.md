@@ -7,3 +7,5 @@ and also included a static pie chart at the bottom of the page that shows the to
 ### HTML Structure: [view here](index.html)
 ### JavaScript Code: [view here](records.js)
 ![Dashboard](dashboard_screenshot.png)
+
+### Data provided by Discogs
