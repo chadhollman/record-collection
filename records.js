@@ -78,7 +78,13 @@ function updateArtistDistribution(data) {
         values: counts,
         type: "pie",
         hole: 0.4,
-        marker: { colors: d3.schemeObservable10 },
+        marker: {
+            colors: d3.schemeObservable10,
+            line: {
+                color: 'white',
+                width: 3 
+            }
+        },
         textinfo: "label",
         hoverinfo: "value",
         textposition: "inside",
