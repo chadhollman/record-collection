@@ -77,16 +77,29 @@ function updateArtistDistribution(data) {
         labels: artistNames,
         values: counts,
         type: "pie",
-        hole: 0.4, // Creates a hollow center for a doughnut effect
-        marker: { colors: d3.schemeObservable10 }, // Use a color scheme for better distinction
-        textinfo: "label", // Display artist names and counts
-        hoverinfo: "value", // Show artist names and counts on hover
-        textposition: "inside" // Position labels outside the chart
+        hole: 0.4,
+        marker: { colors: d3.schemeObservable10 },
+        textinfo: "label",
+        hoverinfo: "value",
+        textposition: "inside",
+        options: {
+            plugins: {
+                legend: {
+                    display: false,
+                },
+            }
+        }
     }];
     const distributionLayout = {
         width: 1200,
         height: 900,
-
+        showlegend: false,
+        margin: {
+            l: 110, // left margin
+            r: 50, // right margin
+            t: 50, // top margin
+            b: 50  // bottom margin
+        },
     };
     Plotly.newPlot("distribution", distributionData, distributionLayout);
 };
