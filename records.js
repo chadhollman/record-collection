@@ -25,7 +25,7 @@ d3.json("recordcollection.json").then(data => {
 });
 
 // Function to update charts based on selected artist
-const pallette = ["#253D93", "#8390FA", "#FAC748", "#F9E9EC", "#F78DAD", "D2F1E4", "FF5964", "645E9D", "EFABFF", "B1E7B9", "0D1821", "344966", 
+const pallette = ["#253D93", "#8390FA", "#FAC748", "#F9E9EC", "#F78DAD", "D2F1E4", "FF5964", "645E9D", "EFABFF", "B1E7B9", "78C3E3", "344966", 
                    "E6AACE", "F0F4EF", "BFCC94", "FFD275", "E8AE68", "A57F60", "E3A587", "DB5A42"];
 function updateCharts(artist, data) {
     const artistRecords = data
@@ -45,10 +45,10 @@ const scatterData = [{
     marker: { color: pallette, size: 15 }
 }];
 const scatterLayout = {
-    width: 1200, // Set a fixed width
+    width: 1295, // Set a fixed width
     height: 700, // Set a fixed height
     margin: {
-        b: 250, // Increase bottom margin for x-axis labels
+        b: 150, // Increase bottom margin for x-axis labels
         t: 50,
         l: 100,
         r: 100
@@ -84,7 +84,7 @@ function updateArtistDistribution(data) {
             colors: pallette,
             line: {
                 color: 'white',
-                width: 3 
+                width: 4 
             }
         },
         textinfo: "label",
@@ -99,11 +99,11 @@ function updateArtistDistribution(data) {
         }
     }];
     const distributionLayout = {
-        width: 1200,
+        width: 1295,
         height: 900,
         showlegend: false,
         margin: {
-            l: 110, // left margin
+            l: 50, // left margin
             r: 50, // right margin
             t: 50, // top margin
             b: 50  // bottom margin

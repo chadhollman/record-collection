@@ -9,20 +9,43 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   
   <style>
-    .title-container {
-      background-color: #77b1eb; /* Light background color */
-      /* change text color here */
-      color: white; /* Text color */
-      text-align: center; /* Center the text */
-      font-size: 24px; /* Font size */
-      line-height: 1.5; /* Line height for better readability */
-      margin-bottom: 20px; /* Space below the title */
-      font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif; /* Font family */
-      padding: 10px; /* Padding around the title */
-      border-radius: 8px; /* Rounded corners */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    @font-face {
+        font-family: 'ConcreteDemo';
+        src: url('fonts/concrete demo fx.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
     }
+    body {
+      background: linear-gradient(to right, #77b1eb, rgb(236, 219, 142)); /* Light blue to lighter blue */
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+        font-family: 'ConcreteDemo', sans-serif;
+    }
+
+    h3 {
+        color: white;
+    }
+
+    .title-container {
+      background-color: #77b1eb; 
+      color: white; 
+      text-align: center;
+      font-size: 24px;
+      line-height: 1.5; 
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+   
   </style>
+
 </head>
 
 <body>
@@ -32,7 +55,7 @@
     <div class="row">
       <div class="col-md-12 p-5 text-center">
         <div class="title-container">
-          <h1>My Virtual Catalog</h1>
+          <h1>MY VIRTUAL CATALOG</h1>
           <p>an interactive dashboard of my record collection</p>
         </div>
       </div>
