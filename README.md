@@ -6,6 +6,7 @@ and also included a static pie chart at the bottom of the page that shows the to
 ### Dashboard url: https://chadhollman.github.io/record-collection/
 ### HTML Structure: [view here](index.html)
 ### JavaScript Code: [view here](records.js)
-![Dashboard](dashboard_screenshot.png)
+![Dashboard](dashboard_screenshot1.png)
+![Dashboard](dashboard_screenshot2.png)
 
-Data provided by Discogs
+Data source: https://www.discogs.com/user/manholerecords/collection
