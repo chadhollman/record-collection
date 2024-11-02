@@ -25,6 +25,8 @@ d3.json("recordcollection.json").then(data => {
 });
 
 // Function to update charts based on selected artist
+const pallette = ["#253D93", "#8390FA", "#FAC748", "#F9E9EC", "#F78DAD", "D2F1E4", "FF5964", "645E9D", "EFABFF", "B1E7B9", "0D1821", "344966", 
+                   "E6AACE", "F0F4EF", "BFCC94", "FFD275", "E8AE68", "A57F60", "E3A587", "DB5A42"];
 function updateCharts(artist, data) {
     const artistRecords = data
         .filter(d => d.Artist === artist)
@@ -40,7 +42,7 @@ const scatterData = [{
     x: titles,
     y: releaseYears,
     mode: "markers",
-    marker: { color: "teal", size: 15 }
+    marker: { color: pallette, size: 15 }
 }];
 const scatterLayout = {
     width: 1200, // Set a fixed width
@@ -79,7 +81,7 @@ function updateArtistDistribution(data) {
         type: "pie",
         hole: 0.4,
         marker: {
-            colors: d3.schemeObservable10,
+            colors: pallette,
             line: {
                 color: 'white',
                 width: 3 
