@@ -33,51 +33,60 @@ function updateCharts(artist, data) {
     // Update the header with the selected artist's name
     document.getElementById("artistName").innerText = `${artist}`;
 
-    // Create Scatter Plot for Record Titles by Year
-    const titles = artistRecords.map(d => d.Title);
-    const releaseYears = artistRecords.map(d => d.Released);
-    const scatterData = [{
-        x: titles,
-        y: releaseYears,
-        mode: "markers",
-        marker: { color: "teal", size: 15 }
-    }];
-    const scatterLayout = {
-        
-        margin: {
-            b: 150,
-            t: 50,
-            l: 50,
-            r: 50 
-          },
-        yaxis: { 
-            title: "Release Year",
-            tickformat: 'd'  // Display y-axis values as integers
-        }
-    };
-    Plotly.newPlot("bar", scatterData, scatterLayout);
+   // Create Scatter Plot for Record Titles by Year
+const titles = artistRecords.map(d => d.Title);
+const releaseYears = artistRecords.map(d => d.Released);
+const scatterData = [{
+    x: titles,
+    y: releaseYears,
+    mode: "markers",
+    marker: { color: "teal", size: 15 }
+}];
+const scatterLayout = {
+    width: 1200, // Set a fixed width
+    height: 700, // Set a fixed height
+    margin: {
+        b: 250, // Increase bottom margin for x-axis labels
+        t: 50,
+        l: 100,
+        r: 100
+    },
+    xaxis: {
+        automargin: true // Prevent label cut-offs
+    },
+    yaxis: { 
+        title: "Release Year",
+        tickformat: 'd' // Display y-axis values as integers
+    }
+};
+Plotly.newPlot("bar", scatterData, scatterLayout);
 }
 
-// Function to create distribution chart for top 20 artist appearances
 function updateArtistDistribution(data) {
     // Calculate frequency of each artist in the collection and sort by count
     const artistCounts = d3.rollups(data, v => v.length, d => d.Artist)
         .sort((a, b) => b[1] - a[1]) // Sort by count in descending order
-        .slice(0, 10); // Take the top 20 artists
+        .slice(0, 20); // Take the top 20 artists
 
     // Separate artist names and counts for top 20
     const artistNames = artistCounts.map(d => d[0]);
     const counts = artistCounts.map(d => d[1]);
 
-    // Create pie chart
+    // Create doughnut chart
     const distributionData = [{
         labels: artistNames,
         values: counts,
         type: "pie",
-        marker: { colors: d3.schemeCategory10 } // Use a color scheme for better distinction
+        hole: 0.4, // Creates a hollow center for a doughnut effect
+        marker: { colors: d3.schemeObservable10 }, // Use a color scheme for better distinction
+        textinfo: "label", // Display artist names and counts
+        hoverinfo: "value", // Show artist names and counts on hover
+        textposition: "inside" // Position labels outside the chart
     }];
     const distributionLayout = {
-        
+        width: 1200,
+        height: 900,
+
     };
     Plotly.newPlot("distribution", distributionData, distributionLayout);
 };
