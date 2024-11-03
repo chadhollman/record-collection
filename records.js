@@ -20,13 +20,13 @@ d3.json("recordcollection.json").then(data => {
         updateCharts(selectedArtist, data);
     });
 
-    // Distribution Chart for Top 10 Artists in Collection
+    // Distribution Chart for Top 25 Artists in Collection
     updateArtistDistribution(data);
 });
 
 // Function to update charts based on selected artist
-const pallette = ["#253D93", "#8390FA", "#FAC748", "#F9E9EC", "#F78DAD", "D2F1E4", "FF5964", "645E9D", "EFABFF", "B1E7B9", "78C3E3", "344966", 
-                   "E6AACE", "F0F4EF", "BFCC94", "FFD275", "E8AE68", "A57F60", "E3A587", "DB5A42"];
+const pallette = ["#253D93", "#8390FA", "#FAC748", "#F78DAD", "#F9E9EC", "D2F1E4", "FF5964", "645E9D", "EFABFF", "B1E7B9", "78C3E3", "344966", 
+                   "E6AACE", "F0F4EF", "BFCC94", "FFD275", "E8AE68", "A57F60", "E3A587", "DB5A42", "35A7FF", "F19953", "A167A5", "E66070", "00D9C0"];
 function updateCharts(artist, data) {
     const artistRecords = data
         .filter(d => d.Artist === artist)
@@ -42,23 +42,33 @@ const scatterData = [{
     x: titles,
     y: releaseYears,
     mode: "markers",
-    marker: { color: pallette, size: 15 }
+    hoverinfo: 'y',
+    marker: { color: pallette, size: 25 }
 }];
 const scatterLayout = {
-    width: 1295, // Set a fixed width
-    height: 700, // Set a fixed height
+    width: 1295,
+    height: 700,
+    paper_bgcolor: 'rgba(0,0,0,0)', 
+    plot_bgcolor: 'rgba(0,0,0,0)', 
     margin: {
-        b: 150, // Increase bottom margin for x-axis labels
+        b: 150,
         t: 50,
         l: 100,
         r: 100
     },
     xaxis: {
-        automargin: true // Prevent label cut-offs
+        color: 'white',
+        automargin: true
     },
     yaxis: { 
-        title: "Release Year",
-        tickformat: 'd' // Display y-axis values as integers
+        title: {
+            text: "Release Year",
+            standoff: 20
+        },
+        color: 'white',
+        tickformat: 'd',
+        gridcolor: 'rgba(255, 255, 255, 0.2)',
+        tickfont: { color: 'white' },
     }
 };
 Plotly.newPlot("bar", scatterData, scatterLayout);
@@ -68,9 +78,9 @@ function updateArtistDistribution(data) {
     // Calculate frequency of each artist in the collection and sort by count
     const artistCounts = d3.rollups(data, v => v.length, d => d.Artist)
         .sort((a, b) => b[1] - a[1]) // Sort by count in descending order
-        .slice(0, 20); // Take the top 20 artists
+        .slice(0, 25); // Take the top 25 artists
 
-    // Separate artist names and counts for top 20
+    // Separate artist names and counts for top 25
     const artistNames = artistCounts.map(d => d[0]);
     const counts = artistCounts.map(d => d[1]);
 
@@ -84,7 +94,7 @@ function updateArtistDistribution(data) {
             colors: pallette,
             line: {
                 color: 'white',
-                width: 4 
+                width: 3 
             }
         },
         textinfo: "label",
@@ -101,12 +111,19 @@ function updateArtistDistribution(data) {
     const distributionLayout = {
         width: 1295,
         height: 900,
+        paper_bgcolor: 'rgba(0,0,0,0)', 
+        plot_bgcolor: 'rgba(0,0,0,0)', 
         showlegend: false,
+        hoverlabel: {
+            font: {
+                size: 25
+            }
+        },
         margin: {
-            l: 50, // left margin
-            r: 50, // right margin
-            t: 50, // top margin
-            b: 50  // bottom margin
+            l: 50,
+            r: 50,
+            t: 50,
+            b: 50  
         },
     };
     Plotly.newPlot("distribution", distributionData, distributionLayout);
