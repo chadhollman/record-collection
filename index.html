@@ -15,12 +15,14 @@
         font-weight: normal;
         font-style: normal;
     }
+
     body {
-      background: linear-gradient(to right, #77b1eb, rgb(236, 219, 142)); /* Light blue to lighter blue */
+      background: linear-gradient(to right, #77b1eb, rgb(236, 219, 142));
       min-height: 100vh;
       margin: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
     }
 
@@ -30,61 +32,70 @@
 
     h3 {
         color: white;
+        font-size: 1.2rem;
     }
 
     .title-container {
       background-color: #77b1eb; 
       color: white; 
       text-align: center;
-      font-size: 24px;
+      font-size: 1.2rem;
       line-height: 1.5; 
       margin-bottom: 20px;
-      padding: 10px;
+      padding: 15px;
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
-  </style>
+    #artistDropdown {
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+    }
 
+    #bar, #distribution {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+  </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="container-fluid px-3">
     <!-- Header Section -->
     <div class="row">
-      <div class="col-md-12 p-5 text-center">
+      <div class="col-12 p-3 text-center">
         <div class="title-container">
           <h1>MY VIRTUAL CATALOG</h1>
           <p>an interactive dashboard of my record collection</p>
         </div>
       </div>
     </div>
-    <br>
 
     <!-- Dropdown for Selecting Artist -->
     <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
+      <div class="col-12">
+        <div class="form-group text-center">
           <label for="artistDropdown" style="color: white;">Select Artist:</label>
           <select id="artistDropdown" class="form-control"></select>
         </div>
       </div>
-    </div> 
+    </div>
 
     <!-- Scatter Plot Section -->
     <div class="row mt-4">
-  <div class="col-md-12">
-    <h3 class="text-center" id="artistName">Release Year of Selected Artist's Records</h3>
-    <div id="bar"></div>
-  </div>
-</div>
+      <div class="col-12">
+        <h3 class="text-center" id="artistName">Release Year of Selected Artist's Records</h3>
+        <div id="bar" class="mx-auto"></div>
+      </div>
+    </div>
 
     <!-- Pie Chart Section for Artist Distribution -->
     <div class="row mt-4">
-      <div class="col-md-12">
+      <div class="col-12">
         <h3 class="text-center">Top 25 Artists in Collection</h3>
-        <div id="distribution"></div>
+        <div id="distribution" class="mx-auto"></div>
       </div>
     </div>
 
